@@ -119,24 +119,61 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     let knowMore = document.querySelector('.more')
     console.log(knowMore)
+    
     knowMore.addEventListener('click', ()=>{
         let overlay = document.querySelector('.overlay')
         overlay.style.display = 'block'
         document.body.style.overflow = 'hidden'
-        let 
         let popUpClose = document.querySelector('.popup-close')
-        popUpClose.addEventListener('click',()=>{
-            overLay.style.display = 'none'
+        popUpClose.addEventListener('click', ()=>{
+            overlay.style.display = 'none'
             document.body.style.overflow = ''
         })
-//        knowMore.style.display = 'none'
-//        knowMore.setAttribute('disableb', true)
-//        knowMore.style.visibility = 'hidden'
+    //    knowMore.style.display = 'none'
+    //    knowMore.setAttribute('disableb', true)
+    //    knowMore.style.visibility = 'hidden'
     })
-    function showModal (){
-        
+    ////////////////////////// TIMER/////////////////////////////////
+    let timer = document.querySelector('.timer')
+    let timerTitle = document.querySelector('.timer-title')
+    let timerAction = document.querySelector('.timer-action')
+    let timerNumbers = document.querySelector('.timer-numbers')    
+    let days = timerNumbers.getElementsByClassName('days')[0]
+    let hours = timerNumbers.getElementsByClassName('hours')[0]
+    let min = timerNumbers.getElementsByClassName('minutes')[0]
+    let sec = timerNumbers.getElementsByClassName('seconds')[0]  
+
+    let deadline = "2021-11-13T00:00:00"
+    
+    function result(){
+        let close = setInterval(()=>{
+            let now = new Date()
+            let time =(Date.parse(deadline) - Date.parse(now))
+            let data = {
+                total: time,
+                days: Math.floor(time/1000/60/60/24%24) + 'd',
+                hours: Math.floor(time/1000/60/60%24) + 'h',
+                min: Math.floor(time/1000/60%60) + 'm',
+                sec: Math.floor(time/1000%60) + 's'
+            }
+
+            days.textContent = data.days
+            hours.textContent = data.hours
+            min.textContent = data.min
+            sec.textContent = data.sec
+
+            if(data.total <= 0){
+                clearInterval(close)
+                timer.style.display = 'none'
+                knowMore.style.display = 'none'
+                // timer.removeChild(timerAction, timerNumbers, timerTitle)                
+            }
+
+            return data
+        }, 1000)
     } 
-      
+    result()
+
 })
     
     
