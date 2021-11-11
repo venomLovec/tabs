@@ -134,6 +134,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     //    knowMore.style.visibility = 'hidden'
     })
     
+
     ////////////////////////// TIMER/////////////////////////////////
     let timer = document.querySelector('.timer')
     let timerTitle = document.querySelector('.timer-title')
