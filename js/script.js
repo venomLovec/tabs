@@ -133,7 +133,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     //    knowMore.setAttribute('disableb', true)
     //    knowMore.style.visibility = 'hidden'
     })
-    
 
     ////////////////////////// TIMER/////////////////////////////////
     let timer = document.querySelector('.timer')
@@ -175,7 +174,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }, 1000)
     } 
     result()
-//////////////////////////////////////////////////////////////////////
+
 })
     
     
